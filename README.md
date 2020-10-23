@@ -1,7 +1,6 @@
 <img alt="React Native Poll" src="assets/logo.png" width="1050"/>
 
-
-[![React Native Poll](https://img.shields.io/badge/-Extremely%20easy%20to%20create%20a%20React%20Native%20Component%20Library%20with%20both%20Stateful%20and%20Functional%20Component%20Examples-orange?style=for-the-badge)](https://github.com/WrathChaos/react-native-poll)
+[![Voting and poll library for React Native with fully customizable options](https://img.shields.io/badge/-Voting%20and%20poll%20library%20for%20React%20Native%20with%20fully%20customizable%20options-orange?style=for-the-badge)](https://github.com/WrathChaos/react-native-poll)
 
 [![npm version](https://img.shields.io/npm/v/react-native-poll.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-poll)
 [![npm](https://img.shields.io/npm/dt/react-native-poll.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-poll)
@@ -27,8 +26,7 @@ npm i react-native-poll
 <h5><i>IMPORTANT! You need install them</i></h5>
 
 ```js
-"react": ">= 16.x.x",
-"react-native": ">= 0.55.x",
+"@freakycoder/react-native-bounceable": ">= 0.2.4",
 ```
 
 # Usage
@@ -36,13 +34,51 @@ npm i react-native-poll
 ## Import
 
 ```jsx
-import MyComponent from "react-native-poll";
+import RNPoll, { IChoice } from "react-native-poll";
 ```
 
 ## Fundamental Usage
 
 ```jsx
-<MyComponent />
+<RNPoll
+  totalVotes={30}
+  choices={choices}
+  onChoicePress={(selectedChoice: IChoice) =>
+    console.log("SelectedChoice: ", selectedChoice)
+  }
+/>
+```
+
+## Advanced Usage
+
+```jsx
+import RNAnimated from "react-native-animated-component";
+
+<RNPoll
+  appearFrom="left"
+  animationDuration={750}
+  totalVotes={30}
+  choices={choices}
+  PollContainer={RNAnimated}
+  PollItemContainer={RNAnimated}
+  onChoicePress={(selectedChoice: IChoice) =>
+    console.log("SelectedChoice: ", selectedChoice)
+  }
+/>;
+```
+
+## Data Format (IChoice)
+
+You must use this data format for generating the poll choices
+
+```json
+const choices: Array<IChoice> = [
+  { id: 1, choice: "Nike", votes: 12 },
+  { id: 2, choice: "Adidas", votes: 1 },
+  { id: 3, choice: "Puma", votes: 3 },
+  { id: 4, choice: "Reebok", votes: 5 },
+  { id: 5, choice: "Under Armour", votes: 9 },
+];
 ```
 
 ## Example Project 😍

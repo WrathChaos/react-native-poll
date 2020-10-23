@@ -13,8 +13,7 @@
     "@freakycoder/react-native-bounceable": "^0.2.4",
     "react": "16.13.1",
     "react-native": "0.63.3",
-    "react-native-animated-component": "^0.1.0",
-    "react-native-gesture-handler": "^1.8.0"
+    "react-native-animated-component": "^0.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

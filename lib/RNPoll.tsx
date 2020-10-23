@@ -3,9 +3,9 @@ import { View, ScrollView, StyleProp, ViewStyle } from "react-native";
 /**
  * ? Local Imports
  */
-import styles from "./RNVote.style";
-import RNVoteItem from "./components/RNVoteItem";
-import { countPercentage } from "./utils/RNVote.utils";
+import styles from "./RNPoll.style";
+import RNPollItem from "./components/RNPollItem";
+import { countPercentage } from "./utils/RNPoll.utils";
 
 export type CustomStyleProp =
   | StyleProp<ViewStyle>
@@ -17,26 +17,30 @@ export interface IChoice {
   choice: string;
 }
 
-interface IRNVoteProps {
+export interface IRNPollProps {
   totalVotes: number;
-  votedChoiceByID?: number;
   hasBeenVoted?: boolean;
+  votedChoiceByID?: number;
+  disableBuiltInIncreaseVote?: boolean;
   choices: Array<IChoice>;
   style?: CustomStyleProp;
   children?: React.ReactNode;
   renderIcon?(): JSX.Element;
-  VoteItemContainer?: any;
-  VoteContainer?: any;
+  PollItemContainer?: any;
+  PollContainer?: any;
+  onChoicePress: (selectedChoice: IChoice) => void;
 }
 
-const RNVote: React.FC<IRNVoteProps> = ({
+const RNPoll: React.FC<IRNPollProps> = ({
   style,
   choices,
   totalVotes,
   hasBeenVoted = false,
+  disableBuiltInIncreaseVote = false,
   votedChoiceByID = undefined,
-  VoteItemContainer = View,
-  VoteContainer = View,
+  PollItemContainer = View,
+  PollContainer = View,
+  onChoicePress,
   ...rest
 }) => {
   const [_hasBeenVoted, setHasBeenVoted] = React.useState(hasBeenVoted);
@@ -48,7 +52,7 @@ const RNVote: React.FC<IRNVoteProps> = ({
         style={styles.scrollViewStyle}
         showsVerticalScrollIndicator={false}
       >
-        <VoteContainer style={styles.voteContainer} {...rest}>
+        <PollContainer style={styles.pollContainer} {...rest}>
           {choices.map((eachChoice: IChoice) => {
             const { choice, id, votes } = eachChoice;
             const percentage = _hasBeenVoted
@@ -56,7 +60,7 @@ const RNVote: React.FC<IRNVoteProps> = ({
               : 0;
 
             return (
-              <RNVoteItem
+              <RNPollItem
                 {...rest}
                 id={id}
                 key={id}
@@ -65,18 +69,21 @@ const RNVote: React.FC<IRNVoteProps> = ({
                 percentage={percentage}
                 hasBeenVoted={_hasBeenVoted}
                 votedChoiceByID={votedChoice}
-                VoteItemContainer={VoteItemContainer}
+                PollItemContainer={PollItemContainer}
                 onPress={() => {
                   setHasBeenVoted(true);
                   setVotedChoice(id);
+                  !disableBuiltInIncreaseVote &&
+                    (eachChoice.votes = eachChoice.votes + 1);
+                  onChoicePress && onChoicePress(eachChoice);
                 }}
               />
             );
           })}
-        </VoteContainer>
+        </PollContainer>
       </ScrollView>
     </View>
   );
 };
 
-export default RNVote;
+export default RNPoll;

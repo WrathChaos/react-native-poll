@@ -16,11 +16,11 @@ import RNBounceable, {
 /**
  * ? Local Imports
  */
-import styles, { _container, _animatedViewStyle } from "./RNVoteItem.style";
+import styles, { _container, _animatedViewStyle } from "./RNPollItem.style";
 import {
   convertPercentageString,
   calculateProgressBarAnimation,
-} from "../utils/RNVote.utils";
+} from "../utils/RNPoll.utils";
 
 const defaultCheckMarkImage = require("../local-assets/checkmark.png");
 
@@ -30,7 +30,7 @@ export interface ISource {
   source: string | { uri: string };
 }
 
-export interface IRNVoteItemProps extends IRNBounceableProps {
+export interface IRNPollItemProps extends IRNBounceableProps {
   id: number;
   text: string;
   disabled?: boolean;
@@ -47,10 +47,11 @@ export interface IRNVoteItemProps extends IRNBounceableProps {
   children?: React.ReactNode;
   renderIcon?(): JSX.Element;
   ImageComponent?: any;
-  VoteItemContainer?: any;
+  PollItemContainer?: any;
+  onPress: () => void;
 }
 
-const RNVoteItem: React.FC<IRNVoteItemProps> = ({
+const RNPollItem: React.FC<IRNPollItemProps> = ({
   id,
   text,
   onPress,
@@ -65,7 +66,7 @@ const RNVoteItem: React.FC<IRNVoteItemProps> = ({
   fillBackgroundColor = "#aabee3",
   checkMarkIconImageSource = defaultCheckMarkImage,
   ImageComponent = Image,
-  VoteItemContainer = View,
+  PollItemContainer = View,
   ...rest
 }) => {
   const { width } = calculateProgressBarAnimation({
@@ -90,7 +91,7 @@ const RNVoteItem: React.FC<IRNVoteItemProps> = ({
         />
         <Text style={[styles.choiceTextStyle, choiceTextStyle]}>{text}</Text>
         {hasBeenVoted && (
-          <VoteItemContainer style={styles.voteItemContainer} {...rest}>
+          <PollItemContainer style={styles.pollItemContainer} {...rest}>
             {isChoiceSelected && (
               <ImageComponent
                 source={checkMarkIconImageSource}
@@ -100,11 +101,11 @@ const RNVoteItem: React.FC<IRNVoteItemProps> = ({
             <Text style={[styles.percentageTextStyle, percentageTextStyle]}>
               {convertPercentageString(percentage)}
             </Text>
-          </VoteItemContainer>
+          </PollItemContainer>
         )}
       </View>
     </RNBounceable>
   );
 };
 
-export default RNVoteItem;
+export default RNPollItem;

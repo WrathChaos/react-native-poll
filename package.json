@@ -1,14 +1,19 @@
 {
-  "name": "react-native-typescript-library-starter",
-  "version": "1.0.2",
-  "description": "Extremely easy to create a React Native Component Library with both Stateful and Functional Component Examples.",
-  "main": "./build/dist/index.js",
-  "repository": "git@github.com:WrathChaos/react-native-typescript-library-starter.git",
+  "name": "react-native-poll",
+  "version": "0.1.0",
+  "description": "Voting and poll library for React Native with fully customizable options",
+  "main": "./build/dist/RNPoll.js",
+  "repository": "git@github.com:WrathChaos/react-native-poll-starter.git",
   "author": "FreakyCoder <kurayogun@gmail.com>",
   "license": "MIT",
   "homepage": "https://www.freakycoder.com",
-  "bugs": "https://github.com/WrathChaos/react-native-typescript-library-starter/issues",
+  "bugs": "https://github.com/WrathChaos/react-native-poll-starter/issues",
   "keywords": [
+    "vote",
+    "poll",
+    "voting",
+    "built-in",
+    "poll-system",
     "FreakyCoder",
     "freakycoder",
     "kuray",
@@ -28,7 +33,8 @@
   },
   "peerDependencies": {
     "react": ">= 16.x.x",
-    "react-native": ">=0.63.x"
+    "react-native": ">=0.63.x",
+    "@freakycoder/react-native-bounceable": ">= 0.2.3"
   },
   "devDependencies": {
     "@types/react": "^16.9.53",
@@ -52,8 +58,5 @@
       "npx prettier --write",
       "eslint src/*.js --fix-dry-run"
     ]
-  },
-  "dependencies": {
-    "@freakycoder/react-native-bounceable": "^0.2.3"
   }
 }

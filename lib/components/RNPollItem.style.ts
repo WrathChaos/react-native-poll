@@ -34,7 +34,7 @@ export const _animatedViewStyle = (
 interface Style {
   container: ViewStyle;
   choiceTextStyle: TextStyle;
-  voteItemContainer: ViewStyle;
+  pollItemContainer: ViewStyle;
   percentageTextStyle: TextStyle;
   checkMarkImageStyle: ImageStyle;
 }
@@ -47,7 +47,7 @@ export default StyleSheet.create<Style>({
     color: "#19191a",
     paddingHorizontal: 16,
   },
-  voteItemContainer: {
+  pollItemContainer: {
     marginRight: 20,
     flexDirection: "row",
     alignItems: "center",

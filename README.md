@@ -90,7 +90,7 @@ import RNAnimated from "react-native-animated-component";
 
 You must use this data format for generating the poll choices
 
-```json
+```js
 const choices: Array<IChoice> = [
   { id: 1, choice: "Nike", votes: 12 },
   { id: 2, choice: "Adidas", votes: 1 },

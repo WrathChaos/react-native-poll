@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StatusBar, Dimensions, SafeAreaView } from "react-native";
-import RNPoll, { IChoice } from "./build/dist/RNPoll";
+import RNPoll, { IChoice } from "react-native-poll";
 import RNAnimated from "react-native-animated-component";
 
 const { width: ScreenWidth } = Dimensions.get("window");

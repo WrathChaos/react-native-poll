@@ -52,5 +52,8 @@
       "npx prettier --write",
       "eslint src/*.js --fix-dry-run"
     ]
+  },
+  "dependencies": {
+    "@freakycoder/react-native-bounceable": "^0.2.3"
   }
 }

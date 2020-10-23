@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StatusBar, Dimensions, SafeAreaView } from "react-native";
+import { View, Text, StatusBar, Dimensions, SafeAreaView } from "react-native";
 import RNPoll, { IChoice } from "./build/dist/RNPoll";
 import RNAnimated from "react-native-animated-component";
 
@@ -18,22 +18,36 @@ const App = () => {
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={{ flex: 1, alignItems: "center" }}>
-        <View
-          style={{
-            width: ScreenWidth * 0.9,
-          }}
-        >
-          <RNPoll
-            appearFrom="top"
-            animationDuration={750}
-            totalVotes={30}
-            choices={choices}
-            PollContainer={RNAnimated}
-            PollItemContainer={RNAnimated}
-            onChoicePress={(selectedChoice: IChoice) =>
-              console.log("SelectedChoice: ", selectedChoice)
-            }
-          />
+        <View>
+          <Text
+            style={{
+              marginTop: 32,
+              fontSize: 20,
+              fontFamily: "SuezOne-Regular",
+            }}
+          >
+            What is your favorite sport brand?
+          </Text>
+          <View
+            style={{
+              width: ScreenWidth * 0.9,
+            }}
+          >
+            <RNPoll
+              appearFrom="top"
+              animationDuration={750}
+              totalVotes={30}
+              choices={choices}
+              PollContainer={RNAnimated}
+              PollItemContainer={RNAnimated}
+              choiceTextStyle={{
+                fontFamily: "SuezOne-Regular",
+              }}
+              onChoicePress={(selectedChoice: IChoice) =>
+                console.log("SelectedChoice: ", selectedChoice)
+              }
+            />
+          </View>
         </View>
       </SafeAreaView>
     </>

@@ -10,8 +10,27 @@
 
 <p align="center">
   <img alt="React Native Poll"
-        src="assets/Screenshots/typescript.jpg" />
+        src="assets/Screenshots/react-native-poll.gif" />
 </p>
+
+<table>
+  <tr>
+    <td>
+      <b>React Native Poll</b>
+    </td>
+    <td>
+      <b>React Native Poll Choice Selected</b>
+    </td>
+  </tr>
+ <tr>
+    <td align="center"> 
+      <img alt="React Native Poll" src="assets/Screenshots/react-native-poll.png"  />
+    </td>
+    <td align="center">
+      <img alt="React Native Poll" src="assets/Screenshots/react-native-poll-selected.png"  />
+    </td>
+   </tr>
+</table>
 
 # Installation
 
@@ -93,9 +112,6 @@ Simply run
 should work of the example project.
 
 # Configuration - Props
-
-PollItemContainer?: any;
-PollContainer?: any;
 
 ## Fundamentals
 

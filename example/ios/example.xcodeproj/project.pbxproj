@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* exampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* exampleTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -20,6 +19,7 @@
 		7768219C07E6AEC7BB939ABD /* libPods-example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32180BE8D2785D19543EFF67 /* libPods-example.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		CEFDD2EAE7F4625BFDF6569D /* libPods-example-exampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0289FEE565CCBF3E23B2D29E /* libPods-example-exampleTests.a */; };
+		534093425E4B4A0C927DEBEE /* SuezOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F69A06B86E97462985AA7D5D /* SuezOne-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +67,7 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F2A997031C3FB963EFF7A911 /* Pods-example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.debug.xcconfig"; path = "Target Support Files/Pods-example/Pods-example.debug.xcconfig"; sourceTree = "<group>"; };
 		F494135DEFEEF939B20E81FD /* Pods-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.release.xcconfig"; path = "Target Support Files/Pods-example/Pods-example.release.xcconfig"; sourceTree = "<group>"; };
+		F69A06B86E97462985AA7D5D /* SuezOne-Regular.ttf */ = {isa = PBXFileReference; name = "SuezOne-Regular.ttf"; path = "../assets/SuezOne-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +182,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				5A65771C16D10E3BA5402C5B /* Pods */,
+				8B46B077EB81418ABA556F69 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -197,6 +199,15 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		8B46B077EB81418ABA556F69 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				F69A06B86E97462985AA7D5D /* SuezOne-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -342,6 +353,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				534093425E4B4A0C927DEBEE /* SuezOne-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

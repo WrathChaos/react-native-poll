@@ -110,7 +110,8 @@ const RNVoteItem: React.FC<IRNVoteItemProps> = ({
               flexDirection: "row",
               alignItems: "center",
             }}
-            appearFrom="left"
+            animationDuration={750}
+            appearFrom="top"
           >
             {isChosen && (
               <ImageComponent

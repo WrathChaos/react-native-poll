@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {
   View,
   Text,
@@ -41,12 +41,14 @@ const RNVote: React.FC<IRNVoteProps> = ({
   question,
   choices,
   sumOfVotes,
-  votedChoice,
-  hasBeenVoted = true,
+  votedChoice = false,
+  hasBeenVoted = false,
   VoteItemContainer = View,
   QuestionsContainer = View,
   ...rest
 }) => {
+  const [_hasBeenVoted, setHasBeenVoted] = React.useState(hasBeenVoted);
+
   return (
     <View style={[style]}>
       <Text
@@ -66,8 +68,8 @@ const RNVote: React.FC<IRNVoteProps> = ({
         <QuestionsContainer style={{ marginTop: 32 }} {...rest}>
           {choices.map((eachChoice: IChoice) => {
             const { choice, id, votes } = eachChoice;
-            const isChosen = hasBeenVoted && votedChoice === id;
-            const percentage = hasBeenVoted
+            const isChosen = _hasBeenVoted && votedChoice === id;
+            const percentage = _hasBeenVoted
               ? countPercentage(votes, sumOfVotes)
               : 0;
 
@@ -76,15 +78,13 @@ const RNVote: React.FC<IRNVoteProps> = ({
                 {...rest}
                 key={id}
                 text={choice}
-                // isChosen={isChosen}
-                isChosen
-                disabled={hasBeenVoted}
+                isChosen={isChosen}
+                disabled={_hasBeenVoted}
                 percentage={percentage}
-                // hasBeenVoted={hasBeenVoted}
-                hasBeenVoted
+                hasBeenVoted={_hasBeenVoted}
                 VoteItemContainer={VoteItemContainer}
                 onPress={() => {
-                  choice;
+                  setHasBeenVoted(true);
                 }}
               />
             );

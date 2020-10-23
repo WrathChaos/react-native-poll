@@ -2,7 +2,6 @@ import React from "react";
 import { View, StatusBar, Dimensions, SafeAreaView } from "react-native";
 import RNVote, { IChoice } from "./lib/Vote/RNVote";
 import RNAnimated from "react-native-animated-component";
-// import { QuestionDetails } from "./lib/Vote-2/QuestionDetails";
 
 const { width: ScreenWidth } = Dimensions.get("window");
 
@@ -27,8 +26,10 @@ const App = () => {
           <RNVote
             totalVotes={30}
             choices={choices}
+            VoteContainer={RNAnimated}
             VoteItemContainer={RNAnimated}
-            QuestionsContainer={RNAnimated}
+            appearFrom="left"
+            animationDuration={750}
           />
         </View>
       </SafeAreaView>

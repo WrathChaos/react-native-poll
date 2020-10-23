@@ -94,23 +94,34 @@ should work of the example project.
 
 # Configuration - Props
 
+PollItemContainer?: any;
+PollContainer?: any;
+
 ## Fundamentals
 
-| Property    |  Type  |  Default  | Description           |
-| ----------- | :----: | :-------: | --------------------- |
-| title       | string | undefined | change the title      |
-| description | string | undefined | change the descrition |
+| Property      |      Type      |  Default  | Description                                          |
+| ------------- | :------------: | :-------: | ---------------------------------------------------- |
+| totalVotes    |     number     | undefined | set the total votes of the poll                      |
+| choices       | Array<IChoice> | undefined | set the choices array for the generating them        |
+| onChoicePress |    function    |  default  | set your own logic when a choice is pressed/selected |
 
 ## Customization (Optionals)
 
-| Property       |   Type    |  Default  | Description                                                            |
-| -------------- | :-------: | :-------: | ---------------------------------------------------------------------- |
-| enableButton   |  boolean  |   false   | let you enable the button (must use it for button)                     |
-| onPress        | function  | undefined | set your own logic for the button functionality when it is pressed     |
-| buttonText     |  string   | undefined | change the button's text                                               |
-| style          | ViewStyle |  default  | set or override the style object for the main container                |
-| buttonStyle    | ViewStyle |  default  | set or override the style object for the button style                  |
-| ImageComponent |   Image   |  default  | set your own component instead of default react-native Image component |
+| Property                   |    Type    |  Default  | Description                                                                                                                                                                    |
+| -------------------------- | :--------: | :-------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| hasBeenVoted               |  boolean   |   false   | let you to enable if the poll is already voted                                                                                                                                 |
+| votedChoiceByID            | number(id) | undefined | let you to select the already voted poll choice                                                                                                                                |
+| disableBuiltInIncreaseVote |  boolean   |   false   | enable/disable the built-in automatically increase the vote system when a choice is selected                                                                                   |
+| style                      | ViewStyle  |  default  | set or override the style object for the main container                                                                                                                        |
+| choiceTextStyle            | TextStyle  |  default  | set or override the style object for the choice text style                                                                                                                     |
+| percentageTextStyle        | TextStyle  |  default  | set or override the style object for the percentage text style                                                                                                                 |
+| checkMarkImageStyle        | ImageStyle |  default  | set or override the style object for the checkmark image style                                                                                                                 |
+| borderColor                |   color    |  #aabee3  | change the border color                                                                                                                                                        |
+| fillBackgroundColor        |   color    |  #aabee3  | change the filling background color                                                                                                                                            |
+| checkMarkIconImageSource   |  ISource   |  default  | change the check mark image source                                                                                                                                             |
+| PollContainer              | component  |  default  | set your own component instead of default react-native View component such as [react-native-animated-component](https://github.com/WrathChaos/react-native-animated-component) |
+| PollItemContainer          | component  |  default  | set your own component instead of default react-native View component such as [react-native-animated-component](https://github.com/WrathChaos/react-native-animated-component) |
+| ImageComponent             | component  |  default  | set your own component instead of default react-native Image component such as `FastImage`                                                                                     |
 
 ## Future Plans
 

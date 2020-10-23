@@ -24,10 +24,8 @@ export interface IRNPollProps {
   disableBuiltInIncreaseVote?: boolean;
   choices: Array<IChoice>;
   style?: CustomStyleProp;
-  children?: React.ReactNode;
-  renderIcon?(): JSX.Element;
-  PollItemContainer?: any;
   PollContainer?: any;
+  PollItemContainer?: any;
   onChoicePress: (selectedChoice: IChoice) => void;
 }
 

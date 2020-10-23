@@ -6,9 +6,9 @@ import RNAnimated from "react-native-animated-component";
 const { width: ScreenWidth } = Dimensions.get("window");
 
 const choices: Array<IChoice> = [
-  { id: 1, choice: "Nike", votes: 12 },
-  { id: 2, choice: "Adidas", votes: 1 },
-  { id: 3, choice: "Puma", votes: 3 },
+  { id: 1, choice: "Nike", votes: 17 },
+  { id: 2, choice: "Adidas", votes: 7 },
+  { id: 3, choice: "Puma", votes: 1 },
   { id: 4, choice: "Reebok", votes: 5 },
   { id: 5, choice: "Under Armour", votes: 9 },
 ];
@@ -24,7 +24,7 @@ const App = () => {
           }}
         >
           <RNPoll
-            appearFrom="left"
+            appearFrom="top"
             animationDuration={750}
             totalVotes={30}
             choices={choices}

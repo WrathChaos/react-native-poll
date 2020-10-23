@@ -24,9 +24,8 @@ export interface IChoice {
 }
 
 interface IRNVoteProps {
-  question: string;
-  sumOfVotes: number;
-  votedChoice?: number;
+  totalVotes: number;
+  votedChoiceByID?: number;
   hasBeenVoted?: boolean;
   choices: Array<IChoice>;
   style?: CustomStyleProp;
@@ -38,27 +37,19 @@ interface IRNVoteProps {
 
 const RNVote: React.FC<IRNVoteProps> = ({
   style,
-  question,
   choices,
-  sumOfVotes,
-  votedChoice = false,
+  totalVotes,
   hasBeenVoted = false,
+  votedChoiceByID = undefined,
   VoteItemContainer = View,
   QuestionsContainer = View,
   ...rest
 }) => {
   const [_hasBeenVoted, setHasBeenVoted] = React.useState(hasBeenVoted);
+  const [votedChoice, setVotedChoice] = React.useState(votedChoiceByID);
 
   return (
     <View style={[style]}>
-      <Text
-        style={{
-          fontWeight: "400",
-          textAlign: "center",
-        }}
-      >
-        {question}
-      </Text>
       <ScrollView
         style={{
           flexGrow: 1,
@@ -68,23 +59,24 @@ const RNVote: React.FC<IRNVoteProps> = ({
         <QuestionsContainer style={{ marginTop: 32 }} {...rest}>
           {choices.map((eachChoice: IChoice) => {
             const { choice, id, votes } = eachChoice;
-            const isChosen = _hasBeenVoted && votedChoice === id;
             const percentage = _hasBeenVoted
-              ? countPercentage(votes, sumOfVotes)
+              ? countPercentage(votes, totalVotes)
               : 0;
 
             return (
               <RNVoteItem
                 {...rest}
+                id={id}
                 key={id}
                 text={choice}
-                isChosen={isChosen}
                 disabled={_hasBeenVoted}
                 percentage={percentage}
                 hasBeenVoted={_hasBeenVoted}
+                votedChoiceByID={votedChoice}
                 VoteItemContainer={VoteItemContainer}
                 onPress={() => {
                   setHasBeenVoted(true);
+                  setVotedChoice(id);
                 }}
               />
             );

@@ -12,8 +12,6 @@ const choices: Array<IChoice> = [
   { id: 3, choice: "Nike Extra", votes: 3 },
   { id: 4, choice: "Boom", votes: 5 },
   { id: 5, choice: "Hello", votes: 9 },
-  { id: 6, choice: "Nike", votes: 7 },
-  { id: 7, choice: "Nike", votes: 0 },
 ];
 
 const App = () => {
@@ -27,11 +25,10 @@ const App = () => {
           }}
         >
           <RNVote
-            question="First Vote Question?"
-            sumOfVotes={30}
+            totalVotes={30}
             choices={choices}
-            QuestionsContainer={RNAnimated}
             VoteItemContainer={RNAnimated}
+            QuestionsContainer={RNAnimated}
           />
         </View>
       </SafeAreaView>

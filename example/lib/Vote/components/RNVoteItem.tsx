@@ -42,10 +42,11 @@ const calculateProgressBarAnimation = ({
 };
 
 export interface IRNVoteItemProps extends IRNBounceableProps {
+  id: number;
   text: string;
   disabled?: boolean;
   percentage: number;
-  isChosen?: boolean;
+  votedChoiceByID?: number;
   hasBeenVoted: boolean;
   style?: CustomStyleProp;
   children?: React.ReactNode;
@@ -55,12 +56,13 @@ export interface IRNVoteItemProps extends IRNBounceableProps {
 }
 
 const RNVoteItem: React.FC<IRNVoteItemProps> = ({
+  id,
   text,
   onPress,
-  isChosen,
   disabled,
   percentage,
   hasBeenVoted,
+  votedChoiceByID,
   ImageComponent = Image,
   VoteItemContainer = View,
 }) => {
@@ -69,7 +71,13 @@ const RNVoteItem: React.FC<IRNVoteItemProps> = ({
     hasBeenVoted,
   });
 
-  const _borderWidth = hasBeenVoted ? 0 : 1;
+  console.log("votedChoiceByID: ", votedChoiceByID);
+
+  let _borderWidth = 0.5;
+  const isChoiceSelected = votedChoiceByID === id;
+  if (hasBeenVoted) {
+    _borderWidth = isChoiceSelected ? 0.5 : 0.1;
+  }
 
   return (
     <RNBounceable bounceEffect={0.97} onPress={onPress} disabled={disabled}>
@@ -78,26 +86,27 @@ const RNVoteItem: React.FC<IRNVoteItemProps> = ({
           flex: 1,
           opacity: 1,
           marginTop: 10,
-          borderRadius: 6,
+          borderRadius: 12,
           overflow: "hidden",
-          paddingVertical: 20,
+          paddingVertical: 16,
           alignItems: "center",
           flexDirection: "row",
+          borderColor: "#aabee3",
           borderWidth: _borderWidth,
           justifyContent: "space-between",
-          borderColor: "rgb(134,129,163)",
         }}
       >
         <Animated.View
           style={[
             StyleSheet.absoluteFill,
-            { backgroundColor: "rgb(134,129,163)", width },
+            { backgroundColor: "#aabee3", width },
           ]}
         />
         <Text
           style={{
             flexShrink: 1,
             flexWrap: "wrap",
+            color: "#19191a",
             paddingHorizontal: 20,
           }}
         >
@@ -110,10 +119,10 @@ const RNVoteItem: React.FC<IRNVoteItemProps> = ({
               flexDirection: "row",
               alignItems: "center",
             }}
+            appearFrom="left"
             animationDuration={750}
-            appearFrom="top"
           >
-            {isChosen && (
+            {isChoiceSelected && (
               <ImageComponent
                 source={require("../local-assets/checkMark.png")}
                 style={{
@@ -128,7 +137,8 @@ const RNVoteItem: React.FC<IRNVoteItemProps> = ({
               style={{
                 fontSize: 16,
                 lineHeight: 24,
-                fontWeight: "bold",
+                color: "#19191a",
+                fontWeight: "700",
               }}
             >
               {convertPercentageString(percentage)}

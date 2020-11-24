@@ -24,6 +24,7 @@ export interface IRNPollProps {
   disableBuiltInIncreaseVote?: boolean;
   choices: Array<IChoice>;
   style?: CustomStyleProp;
+  pollContainerStyle?: CustomStyleProp;
   PollContainer?: any;
   PollItemContainer?: any;
   onChoicePress: (selectedChoice: IChoice) => void;
@@ -33,6 +34,7 @@ const RNPoll: React.FC<IRNPollProps> = ({
   style,
   choices,
   totalVotes,
+  pollContainerStyle,
   hasBeenVoted = false,
   disableBuiltInIncreaseVote = false,
   votedChoiceByID = undefined,
@@ -50,7 +52,10 @@ const RNPoll: React.FC<IRNPollProps> = ({
         style={styles.scrollViewStyle}
         showsVerticalScrollIndicator={false}
       >
-        <PollContainer style={styles.pollContainer} {...rest}>
+        <PollContainer
+          style={[styles.pollContainer, pollContainerStyle]}
+          {...rest}
+        >
           {choices.map((eachChoice: IChoice) => {
             const { choice, id, votes } = eachChoice;
             const percentage = _hasBeenVoted

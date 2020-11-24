@@ -1,6 +1,6 @@
 {
   "name": "react-native-poll",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Voting and poll library for React Native with fully customizable options",
   "main": "./build/dist/RNPoll.js",
   "repository": "git@github.com:WrathChaos/react-native-poll-starter.git",

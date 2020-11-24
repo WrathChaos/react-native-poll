@@ -35,8 +35,8 @@ const App = () => {
           >
             <RNPoll
               appearFrom="top"
-              animationDuration={750}
               totalVotes={30}
+              animationDuration={750}
               choices={choices}
               PollContainer={RNAnimated}
               PollItemContainer={RNAnimated}

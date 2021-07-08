@@ -17,7 +17,7 @@ export const _container = (
   marginTop: 10,
   borderRadius: 12,
   overflow: "hidden",
-  paddingVertical: 16,
+  paddingVertical: 8,
   alignItems: "center",
   flexDirection: "row",
   justifyContent: "space-between",

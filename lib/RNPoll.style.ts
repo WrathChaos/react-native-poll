@@ -10,6 +10,6 @@ export default StyleSheet.create<Style>({
     flexGrow: 1,
   },
   pollContainer: {
-    marginTop: 32,
+    marginTop: 16,
   },
 });

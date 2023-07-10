@@ -13,7 +13,7 @@ export const _container = (
   flex: 1,
   borderWidth,
   borderColor,
-  opacity: 1,
+  backgroundColor: "transparent",
   marginTop: 10,
   borderRadius: 12,
   overflow: "hidden",
@@ -25,7 +25,7 @@ export const _container = (
 
 export const _animatedViewStyle = (
   backgroundColor: string,
-  animatedWidth: Animated.AnimatedInterpolation,
+  animatedWidth: Animated.AnimatedInterpolation<number>,
 ): ViewStyle => ({
   backgroundColor,
   width: animatedWidth,

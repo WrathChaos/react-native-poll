@@ -5,10 +5,11 @@ import {
   Image,
   StyleSheet,
   Animated,
-  StyleProp,
-  ViewStyle,
   TextStyle,
   ImageStyle,
+  ImageSourcePropType,
+  StyleProp,
+  ViewStyle,
 } from "react-native";
 import RNBounceable, {
   IRNBounceableProps,
@@ -24,35 +25,32 @@ import {
 
 const defaultCheckMarkImage = require("../local-assets/checkmark.png");
 
-type CustomStyleProp = StyleProp<ViewStyle> | Array<StyleProp<ViewStyle>>;
-
-export interface ISource {
-  source: string | { uri: string };
-}
-
 export interface IRNPollItemProps extends IRNBounceableProps {
-  id: number;
+  pollId: number;
   text: string;
-  disabled?: boolean;
+  onPress: () => void;
   percentage: number;
-  borderColor?: string;
   hasBeenVoted: boolean;
+  disabled?: boolean;
+  borderColor?: string;
   votedChoiceByID?: number;
   fillBackgroundColor?: string;
-  checkMarkIconImageSource?: ISource;
-  choiceTextStyle?: TextStyle;
-  percentageTextStyle?: TextStyle;
-  checkMarkImageStyle?: ImageStyle;
-  style?: CustomStyleProp;
+  checkMarkIconImageSource?: ImageSourcePropType;
+  pollItemContainerStyle?: StyleProp<ViewStyle>;
+  choiceTextStyle?: StyleProp<TextStyle>;
+  percentageTextStyle?: StyleProp<TextStyle>;
+  checkMarkImageStyle?: StyleProp<ImageStyle>;
+  style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
-  renderIcon?(): JSX.Element;
+  selectedChoiceBorderWidth?: number;
+  defaultChoiceBorderWidth?: number;
   ImageComponent?: any;
   PollItemContainer?: any;
-  onPress: () => void;
+  renderIcon?(): JSX.Element;
 }
 
 const RNPollItem: React.FC<IRNPollItemProps> = ({
-  id,
+  pollId,
   text,
   onPress,
   disabled,
@@ -62,8 +60,11 @@ const RNPollItem: React.FC<IRNPollItemProps> = ({
   choiceTextStyle,
   percentageTextStyle,
   checkMarkImageStyle,
+  pollItemContainerStyle,
   borderColor = "#aabee3",
   fillBackgroundColor = "#aabee3",
+  selectedChoiceBorderWidth = 1,
+  defaultChoiceBorderWidth = 0.5,
   checkMarkIconImageSource = defaultCheckMarkImage,
   ImageComponent = Image,
   PollItemContainer = View,
@@ -74,36 +75,44 @@ const RNPollItem: React.FC<IRNPollItemProps> = ({
     hasBeenVoted,
   });
 
-  let _borderWidth = 0.5;
-  const isChoiceSelected = votedChoiceByID === id;
+  let _borderWidth = defaultChoiceBorderWidth;
+  const isChoiceSelected = votedChoiceByID === pollId;
   if (hasBeenVoted) {
-    _borderWidth = isChoiceSelected ? 0.5 : 0.1;
+    _borderWidth = isChoiceSelected
+      ? selectedChoiceBorderWidth
+      : defaultChoiceBorderWidth;
   }
 
   return (
-    <RNBounceable bounceEffect={0.97} onPress={onPress} disabled={disabled}>
-      <View style={_container(borderColor, _borderWidth)}>
-        <Animated.View
-          style={[
-            StyleSheet.absoluteFill,
-            _animatedViewStyle(fillBackgroundColor, width),
-          ]}
-        />
-        <Text style={[styles.choiceTextStyle, choiceTextStyle]}>{text}</Text>
-        {hasBeenVoted && (
-          <PollItemContainer style={styles.pollItemContainer} {...rest}>
-            {isChoiceSelected && (
-              <ImageComponent
-                source={checkMarkIconImageSource}
-                style={[styles.checkMarkImageStyle, checkMarkImageStyle]}
-              />
-            )}
-            <Text style={[styles.percentageTextStyle, percentageTextStyle]}>
-              {convertPercentageString(percentage)}
-            </Text>
-          </PollItemContainer>
-        )}
-      </View>
+    <RNBounceable
+      style={_container(borderColor, _borderWidth)}
+      bounceEffectIn={0.97}
+      onPress={onPress}
+      disabled={disabled}
+    >
+      <Animated.View
+        style={[
+          StyleSheet.absoluteFill,
+          _animatedViewStyle(fillBackgroundColor, width),
+        ]}
+      />
+      <Text style={[styles.choiceTextStyle, choiceTextStyle]}>{text}</Text>
+      {hasBeenVoted && (
+        <PollItemContainer
+          style={[styles.pollItemContainer, pollItemContainerStyle]}
+          {...rest}
+        >
+          {isChoiceSelected && (
+            <ImageComponent
+              source={checkMarkIconImageSource}
+              style={[styles.checkMarkImageStyle, checkMarkImageStyle]}
+            />
+          )}
+          <Text style={[styles.percentageTextStyle, percentageTextStyle]}>
+            {convertPercentageString(percentage)}
+          </Text>
+        </PollItemContainer>
+      )}
     </RNBounceable>
   );
 };

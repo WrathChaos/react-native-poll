@@ -59,6 +59,8 @@ import RNPoll, { IChoice } from "react-native-poll";
 ## Fundamental Usage
 
 ```jsx
+import RNPoll, { IChoice } from "react-native-poll";
+
 <RNPoll
   totalVotes={30}
   choices={choices}
@@ -72,6 +74,7 @@ import RNPoll, { IChoice } from "react-native-poll";
 
 ```jsx
 import RNAnimated from "react-native-animated-component";
+import RNPoll, { IChoice } from "react-native-poll";
 
 <RNPoll
   appearFrom="left"
@@ -116,7 +119,7 @@ should work of the example project.
 ## Fundamentals
 
 | Property      |      Type      |  Default  | Description                                          |
-| ------------- | :------------: | :-------: | ---------------------------------------------------- |
+|---------------|:--------------:|:---------:|------------------------------------------------------|
 | totalVotes    |     number     | undefined | set the total votes of the poll                      |
 | choices       | Array<IChoice> | undefined | set the choices array for the generating them        |
 | onChoicePress |    function    |  default  | set your own logic when a choice is pressed/selected |
@@ -124,18 +127,22 @@ should work of the example project.
 ## Customization (Optionals)
 
 | Property                   |    Type    |  Default  | Description                                                                                                                                                                    |
-| -------------------------- | :--------: | :-------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|----------------------------|:----------:|:---------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | hasBeenVoted               |  boolean   |   false   | let you to enable if the poll is already voted                                                                                                                                 |
 | votedChoiceByID            | number(id) | undefined | let you to select the already voted poll choice                                                                                                                                |
+| disableBuiltInIncreaseVote |  boolean   |   false   | enable/disable the built-in automatically increase the vote system when a choice is selected                                                                                   |
 | disableBuiltInIncreaseVote |  boolean   |   false   | enable/disable the built-in automatically increase the vote system when a choice is selected                                                                                   |
 | style                      | ViewStyle  |  default  | set or override the style object for the main container                                                                                                                        |
 | pollContainerStyle         | ViewStyle  |  default  | set or override the style object for the poll inner container                                                                                                                  |
 | choiceTextStyle            | TextStyle  |  default  | set or override the style object for the choice text style                                                                                                                     |
 | percentageTextStyle        | TextStyle  |  default  | set or override the style object for the percentage text style                                                                                                                 |
 | checkMarkImageStyle        | ImageStyle |  default  | set or override the style object for the checkmark image style                                                                                                                 |
+| pollItemContainerStyle     | ViewStyle  |  default  | set or override the style object for the poll item container                                                                                                                   |
 | borderColor                |   color    |  #aabee3  | change the border color                                                                                                                                                        |
 | fillBackgroundColor        |   color    |  #aabee3  | change the filling background color                                                                                                                                            |
 | checkMarkIconImageSource   |  ISource   |  default  | change the check mark image source                                                                                                                                             |
+| defaultChoiceBorderWidth   |   number   |    0.5    | change the default choice's border width                                                                                                                                       |
+| selectedChoiceBorderWidth  |   number   |     1     | change the selected choice's border width                                                                                                                                      |
 | PollContainer              | component  |  default  | set your own component instead of default react-native View component such as [react-native-animated-component](https://github.com/WrathChaos/react-native-animated-component) |
 | PollItemContainer          | component  |  default  | set your own component instead of default react-native View component such as [react-native-animated-component](https://github.com/WrathChaos/react-native-animated-component) |
 | ImageComponent             | component  |  default  | set your own component instead of default react-native Image component such as `FastImage`                                                                                     |

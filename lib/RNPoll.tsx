@@ -4,12 +4,8 @@ import { View, ScrollView, StyleProp, ViewStyle } from "react-native";
  * ? Local Imports
  */
 import styles from "./RNPoll.style";
-import RNPollItem from "./components/RNPollItem";
+import RNPollItem, { IRNPollItemProps } from "./components/RNPollItem";
 import { countPercentage } from "./utils/RNPoll.utils";
-
-export type CustomStyleProp =
-  | StyleProp<ViewStyle>
-  | Array<StyleProp<ViewStyle>>;
 
 export interface IChoice {
   id: number;
@@ -17,14 +13,14 @@ export interface IChoice {
   choice: string;
 }
 
-export interface IRNPollProps {
+export interface IRNPollProps extends Omit<IRNPollItemProps, "hasBeenVoted"> {
   totalVotes: number;
   hasBeenVoted?: boolean;
   votedChoiceByID?: number;
   disableBuiltInIncreaseVote?: boolean;
   choices: Array<IChoice>;
-  style?: CustomStyleProp;
-  pollContainerStyle?: CustomStyleProp;
+  style?: StyleProp<ViewStyle>;
+  pollContainerStyle?: StyleProp<ViewStyle>;
   PollContainer?: any;
   PollItemContainer?: any;
   onChoicePress: (selectedChoice: IChoice) => void;
@@ -65,7 +61,7 @@ const RNPoll: React.FC<IRNPollProps> = ({
             return (
               <RNPollItem
                 {...rest}
-                id={id}
+                pollId={id}
                 key={id}
                 text={choice}
                 disabled={_hasBeenVoted}
